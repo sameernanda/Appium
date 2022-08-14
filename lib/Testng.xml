@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Payback Suite">
+  <test name="Test Basics 1">
+    <classes>
+       <class name="PaybackAndroid.PaybackTest"/>
+    </classes>
+     
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
