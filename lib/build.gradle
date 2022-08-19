@@ -17,11 +17,11 @@ repositories {
 
 dependencies {
 	testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
-	//implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
-	//implementation group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.141.59'
-	//implementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
-	//implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
-	//implementation group: 'org.seleniumhq.selenium', name: 'selenium-android-driver', version: '2.39.0'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.141.59'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-android-driver', version: '2.39.0'
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 

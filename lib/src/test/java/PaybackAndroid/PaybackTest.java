@@ -32,8 +32,10 @@ public class PaybackTest {
 	@BeforeClass
 	public void setUp() throws MalformedURLException{
 		appiumUrl = new URL("http://localhost:4723/wd/hub");
-		app = new File("C:\\Users\\Admin\\eclipse-workspace\\PaybackAndroid\\lib\\src\\test\\resources\\apps\\PAYBACK_ Shopping Rewards App_13.0.0.13_apkcombo.com.apk");
-
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("PAYBACK_Shopping_Rewards_App_13.0.0.13_apkcombo.com.apk").getFile());
+		
+		//Appium Inspector JSON Info
 //		{
 //		  "appium:BROWSER_NAME": "Android",
 //		  "appium:VERSION": "4.4.2",
@@ -50,7 +52,7 @@ public class PaybackTest {
 		capabilities.setCapability("VERSION", "4.4.2"); 
 		capabilities.setCapability("deviceName","Emulator");
 		capabilities.setCapability("platformName","Android");
-		capabilities.setCapability("app", app);
+		capabilities.setCapability("app", file.getAbsolutePath());
 		capabilities.setCapability("appPackage", "com.adobe.cq.mobile.payback");
 		capabilities.setCapability("appActivity","com.valtech.payback.presentation.ui.activities.MainActivity");
 		driver = new RemoteWebDriver(appiumUrl, capabilities);
@@ -59,29 +61,36 @@ public class PaybackTest {
 	@Test
 	public void testApp() throws Exception {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		//click on profile image at right corner 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/profile_img")).click();
+		//click on sign in button in the list 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/signOutBtn")).click();
+		//Enter username 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/mobile_number_edt")).sendKeys("9876543210");
+		//Enter username
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/pin_edt")).sendKeys("1234");
+		//click on signIn button
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/linearLayoutSignIn")).click();
+		//click on skip button 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/skip")).click();
+		//click on Menu on the top left 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/menu_icon")).click();
+		//click on Coupon section
 		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/"
 				+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
 				+ "androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/"
 				+ "android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/"
 				+ "android.widget.RelativeLayout[9]/android.widget.LinearLayout/android.widget.TextView")).click();
+		//click on Search glass
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/actionEvent")).click();
+		//click on "Search Earn" area
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/search_img")).click();
+		//clear the search area
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/searchTextView")).clear();
+		//Eneter burger in  the search area 
 		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/searchTextView")).sendKeys("burger");
+		//click on search 
 		((RemoteWebDriver) driver).executeScript("mobile:performEditorAction", ImmutableMap.of("action", "Search"));
-//		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/"
-//				+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
-//				+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
-//				+ "android.widget.ListView/android.widget.LinearLayout[1]/android.widget.TextView")).click();
-//		Thread.sleep(15000);
-//		driver.findElement(By.id("com.adobe.cq.mobile.payback:id/shop_now_btn")).click();
 	}
 
 	@AfterClass
